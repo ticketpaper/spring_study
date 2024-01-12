@@ -26,6 +26,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 //	test를 위한 의존성
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	getter, setter 및 로그 관련 의존성
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
