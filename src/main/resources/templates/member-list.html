@@ -1,36 +1,84 @@
+<!-- Member List -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Member List</title>
+    <style>
+        /* 공통 스타일 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button, a.button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+            /* 폰트 굵기 추가 */
+            font-weight: bold;
+            /* 안티앨리어싱 설정 */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        button:hover, a.button:hover {
+            background-color: #45a049;
+        }
+
+        /* Member List 특화 스타일 */
+        a.detail-link {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a.detail-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+<div th:replace="~{header :: headerFragment}"></div>
 <div>
     <table>
+        <thead>
         <tr>
-            <thead>
             <th>이름</th>
             <th>이메일</th>
-            <th>password</th>
-            </thead>
+            <th>작업</th>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+        </thead>
+        <tr th:each="memberList: ${memberList}">
+            <td th:text="${memberList.name}"></td>
+            <td th:text="${memberList.email}"></td>
+            <td>
+                <a th:href="@{/members/find(id=${memberList.id})}" class="button detail-link">상세보기</a>
+            </td>
         </tr>
     </table>
 </div>
-
 </body>
 </html>

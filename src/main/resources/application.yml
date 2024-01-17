@@ -1,0 +1,36 @@
+#applicatiomn.properties? ??
+
+#server.port=8081
+#spring.datasource.url=jdbc:mariadb://localhost::3306/member
+#spring.datasource.username=root
+#spring.datasource.password=1234
+
+#yml ????? ????, ?? ?? :? ?? json? ?? ??? ????.
+# = yaml = ?? ??
+# --- ???? dev(??), prod(??) ?? ?? ??
+
+#server:
+#  port: 8081
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/basic
+    username: root
+    password: 1234
+  jpa:
+    database: mysql
+    #    inooDB Engine Settings
+    database-platform: org.hibernate.dialect.MariaDBDialect
+#    schema prescreation required
+    generate-ddl: true
+    hibernate:
+#      create option : every time create after table drop
+#      update option : apply alter only changes
+#      validate only checks the difference from the actual DB
+#      ????? update ?? validate ??
+      ddl-auto: update
+#    jpa? ???? ??? ????, ??? console?? ?????
+    show-sql: true
+
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml

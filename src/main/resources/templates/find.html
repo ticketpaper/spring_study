@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Detail View</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        #update_form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="header :: headerFragment"></div>
+<div>
+    <table>
+        <tr>
+            <thead>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>비밀번호</th>
+            <th>가입시간</th>
+            </thead>
+        </tr>
+        <tr>
+            <td th:text="${memberList.name}"></td>
+            <td th:text="${memberList.email}"></td>
+            <td th:text="${memberList.password}"></td>
+            <td th:text="${memberList.create_time}"></td>
+        </tr>
+    </table>
+    <button onclick="function view_form() {
+        document.getElementById('update_form').style.display='block';
+    }view_form()">수정</button>
+    <a th:href="@{/members/delete(id=${memberList.id})}">
+        <button style="background-color: #ff0000;">삭제</button>
+    </a>
+    <div id="update_form">
+        <form action="http://localhost:8080/members/update" method="post">
+            <p>id : <input type="text" name="id" th:value="${memberList.id}" readonly></p>
+            <p>이름 : <input type="text" name="name" th:value="${memberList.name}"></p>
+            <p>이메일 : <input type="email" name="email" th:value="${memberList.email}" readonly></p>
+            <p>패스워드: <input type="text" name="password" th:value="${memberList.password}"></p>
+            <input type="submit" value="수정 완료">
+        </form>
+    </div>
+</div>
+</body>
+</html>
