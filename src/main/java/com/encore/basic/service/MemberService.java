@@ -42,7 +42,7 @@ public class MemberService {
 
     public MemberDetailResponseDto findById(int id) throws NoSuchElementException{
         MemberDetailResponseDto memberDetailResponseDto = new MemberDetailResponseDto();
-        Member member = memberRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        Member member = memberRepository.findById(id).orElseThrow(()->new EntityNotFoundException("검색한 아이디의 멤버가 없습니다."));
         memberDetailResponseDto.setId(member.getId());
         memberDetailResponseDto.setName(member.getName());
         memberDetailResponseDto.setEmail(member.getEmail());
@@ -77,4 +77,5 @@ public class MemberService {
     public void delete(int id) {
         memberRepository.delete(memberRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
+
 }
