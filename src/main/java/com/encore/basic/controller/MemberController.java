@@ -104,6 +104,7 @@ public class MemberController {
         memberService.update(memberRequestDto);
 
         return "redirect:/members/find?id=" + memberRequestDto.getId();
+//        웹브라우저에 리턴을 줘버리고 302코드를 보내서 Location에
     }
 
     @GetMapping("delete")
