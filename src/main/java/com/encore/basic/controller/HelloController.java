@@ -1,11 +1,18 @@
 package com.encore.basic.controller;
 
 import com.encore.basic.domain.Hello;
+import com.encore.basic.domain.Member;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Map;
 
 // 모든 요청에 ResponseBody를 붙이고 싶다면, @RestController 사용
@@ -125,4 +132,27 @@ public class HelloController {
         return "ok";
     }
 
+    @PostMapping("http-servlet")
+    @ResponseBody
+    public String httpServletTest(HttpServletRequest req) {
+//        httpServletRequest 객체에서 헤더 정보 추출
+        System.out.println(req.getContentType());
+        System.out.println(req.getMethod());
+//        세션 : 로그인(Auth)정보에서 필요한 정보 값을 추출할때 많이 사용
+        System.out.println(req.getSession());
+        System.out.println(req.getHeader("Accept"));
+
+//        httpServletRequest 객체에서 바디 정보 추출
+        System.out.println(req.getParameter("test1"));
+        System.out.println(req.getParameter("test2"));
+//        req.getReader()를 통해 BufferReader로 받아 직접 파싱
+
+        return "ok";
+    }
+
+    @GetMapping("/hello-servlet-jsp-get")
+    public String helloServletJspGet(Model model){
+        model.addAttribute("myData", "jsp test data");
+        return "hello-jsp";
+    }
 }

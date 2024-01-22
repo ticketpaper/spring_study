@@ -35,7 +35,7 @@ public class MemberController {
 //    @Autowired
 //    private MemberService memberService;
 
-    //    의존성 주입 방법 2. 생성자 주입 방식 => 가장 많이 사용
+//    의존성 주입 방법 2. 생성자 주입 방식 => 가장 많이 사용
 //    장점 : final을 통해 상수로 사용가능, 다형성 구현 가능, 순환 참조 방지
 //    생성자가 1개밖에 없을때에는 Autowired 생략가능
     private final MemberService memberService;

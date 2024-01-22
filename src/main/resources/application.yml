@@ -1,8 +1,8 @@
 #applicatiomn.properties? ??
 
-#server.port=8081
-#spring.datasource.url=jdbc:mariadb://localhost::3306/member
+#server.port=8081ost::3306/member
 #spring.datasource.username=root
+#spring.datasource.url=jdbc:mariadb://localh
 #spring.datasource.password=1234
 
 #yml ????? ????, ?? ?? :? ?? json? ?? ??? ????.
@@ -12,6 +12,16 @@
 #server:
 #  port: 8081
 spring:
+#  Coontroller, jsp
+  mvc:
+#    view:
+#      prefix: /WEB-INF/views/
+#      suffix: .jsp
+#    springboot 2.4 default PathPatternParser
+#    spirngfox = ant_path_matcher
+#    url : http://localhost:8080/swagger-ui/
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://localhost:3306/basic
@@ -31,6 +41,7 @@ spring:
       ddl-auto: update
 #    jpa? ???? ??? ????, ??? console?? ?????
     show-sql: true
+
 
 mybatis:
   mapper-locations: classpath:/mapper/**/*.xml

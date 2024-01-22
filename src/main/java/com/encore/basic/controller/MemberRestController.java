@@ -4,6 +4,7 @@ import com.encore.basic.domain.MemberDetailResponseDto;
 import com.encore.basic.domain.MemberRequestDto;
 import com.encore.basic.domain.MemberResponseDto;
 import com.encore.basic.service.MemberService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("rest")
+@Api(tags ="화원 관리 컨트롤러")
 public class MemberRestController {
     private final MemberService memberService;
 

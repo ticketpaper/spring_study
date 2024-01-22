@@ -11,3 +11,4 @@ public interface MemberRepository {
     public Optional<Member> findById(int id);
     public void delete(Member member);
 }
+
